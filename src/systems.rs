@@ -14,7 +14,7 @@ pub fn handle_text_popup_events(
     mut text_popup_events: EventReader<TextPopupEvent>,
     time: Res<Time>,
 ) {
-    for text_popup_event in text_popup_events.iter() {
+    for text_popup_event in text_popup_events.read() {
         generate_text_popup_from_event(&mut commands, &time, text_popup_event);
     }
 }
