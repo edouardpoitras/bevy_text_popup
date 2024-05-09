@@ -7,4 +7,4 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/edouardpoitras/bevy_text_popup"
 
 [dependencies]
-bevy = "0.12.0"
+bevy = "0.13.0"

@@ -128,7 +128,7 @@ fn get_border_node(text_popup_event: &TextPopupEvent, border_style: Style) -> Te
 
 fn get_text_node(text_popup_event: &TextPopupEvent, text_style: TextStyle) -> TextPopupTextNode {
     let mut text_bundle = TextBundle::from_section(text_popup_event.content.clone(), text_style)
-        .with_text_alignment(text_popup_event.text_alignment);
+        .with_text_justify(text_popup_event.text_alignment);
     text_bundle.z_index = text_popup_event.z_index;
     TextPopupTextNode(text_bundle)
 }
