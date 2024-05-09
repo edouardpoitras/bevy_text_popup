@@ -5,7 +5,7 @@ use bevy::{
         default, App, ButtonBundle, Color, Commands, Component, DespawnRecursiveExt, Entity, Event,
         Handle, NodeBundle, Plugin, TextBundle, Update,
     },
-    text::{Font, TextAlignment},
+    text::{Font, JustifyText},
     ui::{UiRect, Val, ZIndex},
 };
 
@@ -53,7 +53,7 @@ pub struct TextPopupEvent {
     pub padding: UiRect,
     pub margin: UiRect,
     pub modal: Option<Color>,
-    pub text_alignment: TextAlignment,
+    pub text_alignment: JustifyText,
     pub background_color: Color,
     pub confirm_button: Option<TextPopupButton>,
     pub dismiss_button: Option<TextPopupButton>,
@@ -74,7 +74,7 @@ impl Default for TextPopupEvent {
             padding: UiRect::all(Val::Px(20.)),
             margin: UiRect::all(Val::Px(10.)),
             modal: None,
-            text_alignment: TextAlignment::Center,
+            text_alignment: JustifyText::Center,
             background_color: Color::BLACK,
             confirm_button: default(),
             dismiss_button: default(),
