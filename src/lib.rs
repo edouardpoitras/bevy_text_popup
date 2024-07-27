@@ -3,7 +3,7 @@
 use bevy::{
     prelude::{
         default, App, ButtonBundle, Color, Commands, Component, DespawnRecursiveExt, Entity, Event,
-        Handle, NodeBundle, Plugin, TextBundle, Update,
+        Handle, NodeBundle, Plugin, TextBundle, Update, Alpha,
     },
     text::{Font, JustifyText},
     ui::{UiRect, Val, ZIndex},
@@ -70,7 +70,7 @@ impl Default for TextPopupEvent {
             font_size: 32.0,
             font_color: Color::WHITE,
             border: UiRect::all(Val::Px(5.)),
-            border_color: Color::WHITE.with_a(0.5),
+            border_color: Color::WHITE.with_alpha(0.5),
             padding: UiRect::all(Val::Px(20.)),
             margin: UiRect::all(Val::Px(10.)),
             modal: None,

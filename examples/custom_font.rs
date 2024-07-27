@@ -19,7 +19,7 @@ fn setup(
         content: "Custom Font Example".to_string(),
         font: Some(asset_server.load("fonts/FiraSans-Bold.ttf")),
         font_size: 64.0,
-        font_color: Color::RED,
+        font_color: Color::srgb(100., 0. , 0.),
         ..default()
     });
 }
