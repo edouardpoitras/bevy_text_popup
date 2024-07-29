@@ -31,7 +31,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
         }),
         dismiss_button: Some(TextPopupButton {
             text: "Cancel".to_string(),
-            background_color: Color::srgb(100., 0. , 0.),
+            background_color: Color::srgb(100., 0., 0.),
             ..Default::default()
         }),
         ..default()

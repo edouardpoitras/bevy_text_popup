@@ -97,6 +97,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
 
 |bevy|bevy_text_popup|
 |---|---|
+|0.14|0.4|
 |0.13|0.3|
 |0.12|0.2|
 |0.11|0.1|

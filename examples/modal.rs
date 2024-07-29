@@ -22,7 +22,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
 
     text_popup_events.send(TextPopupEvent {
         content: "Modal Example".to_string(),
-        modal: Some(Color::srgb(0., 0. , 100.).with_alpha(0.75)),
+        modal: Some(Color::srgb(0., 0., 100.).with_alpha(0.75)),
         timeout: TextPopupTimeout::Seconds(5),
         ..default()
     });

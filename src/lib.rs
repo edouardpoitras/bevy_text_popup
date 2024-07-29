@@ -2,8 +2,8 @@
 
 use bevy::{
     prelude::{
-        default, App, ButtonBundle, Color, Commands, Component, DespawnRecursiveExt, Entity, Event,
-        Handle, NodeBundle, Plugin, TextBundle, Update, Alpha,
+        default, Alpha, App, ButtonBundle, Color, Commands, Component, DespawnRecursiveExt, Entity,
+        Event, Handle, NodeBundle, Plugin, TextBundle, Update,
     },
     text::{Font, JustifyText},
     ui::{UiRect, Val, ZIndex},
