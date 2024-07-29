@@ -14,7 +14,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
     let event = TextPopupEvent {
         content: "Border Example".to_string(),
         border: UiRect::all(Val::Px(25.)),
-        border_color: Color::RED,
+        border_color: Color::srgb(100., 0., 0.),
         ..default()
     };
     text_popup_events.send(event);
