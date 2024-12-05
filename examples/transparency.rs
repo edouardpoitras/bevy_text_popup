@@ -9,20 +9,26 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
-    commands.spawn(Camera2dBundle::default());
+    commands.spawn(Camera2d::default());
 
     text_popup_events.send(TextPopupEvent {
         content: "Transparent Background".to_string(),
-        font_size: 64.0,
-        background_color: Color::BLACK.with_alpha(0.5),
+        text_font: TextFont {
+            font_size: 64.0,
+            ..Default::default()
+        },
+        background_color: Color::linear_rgba(0., 0., 0., 0.5).into(),
         location: TextPopupLocation::Top,
         ..default()
     });
 
     text_popup_events.send(TextPopupEvent {
         content: "Transparent Text".to_string(),
-        font_size: 64.0,
-        font_color: Color::WHITE.with_alpha(0.5),
+        text_font: TextFont {
+            font_size: 64.0,
+            ..Default::default()
+        },
+        text_color: Color::linear_rgba(1., 1., 1., 0.5).into(),
         location: TextPopupLocation::Bottom,
         ..default()
     });

@@ -24,7 +24,7 @@ pub fn cleanup_expired_text_popups(
     text_popups: Query<(Entity, &TextPopupExpires)>,
     time: Res<Time>,
 ) {
-    let current_time = time.elapsed_seconds_f64();
+    let current_time = time.elapsed_secs_f64();
     for (entity, text_popup) in text_popups.iter() {
         if text_popup.expiration_time < current_time {
             commands.entity(entity).despawn_recursive();

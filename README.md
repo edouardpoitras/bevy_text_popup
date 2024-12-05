@@ -32,7 +32,7 @@ This example will display a modal popup for 10s with a 'Close' button.
 
 ```rust,ignore
 use bevy::prelude::*;
-use bevy_text_popup::{TextPopupEvent, TextPopupPlugin, TextPopupTimeout};
+use bevy_text_popup::{TextPopupEvent, TextPopupPlugin, TextPopupTimeout, TextPopupButton};
 
 fn main() {
     App::new()
@@ -42,14 +42,16 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
-    commands.spawn(Camera2dBundle::default());
+    commands.spawn(Camera2d::default());
 
     text_popup_events.send(TextPopupEvent {
         content: "Modal Example".to_string(),
-        modal: Some(Color::BLUE.with_a(0.75)),
+        modal: Some(Color::linear_rgba(0., 0., 1., 0.75).into()),
         timeout: TextPopupTimeout::Seconds(10),
         dismiss_button: Some(TextPopupButton {
             text: "Close".to_string(),
+            text_color: TextColor::from(Color::BLACK),
+            background_color: Color::linear_rgb(1., 1., 1.).into(),
             ..Default::default()
         }),
         ..default()
@@ -97,6 +99,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
 
 |bevy|bevy_text_popup|
 |---|---|
+|0.15|0.5|
 |0.14|0.4|
 |0.13|0.3|
 |0.12|0.2|

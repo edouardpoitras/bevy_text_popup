@@ -9,15 +9,17 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
-    commands.spawn(Camera2dBundle::default());
+    commands.spawn(Camera2d::default());
 
     let event = TextPopupEvent {
         content: "Close this popup and generate a new one at the bottom?".to_string(),
         confirm_button: Some(TextPopupButton {
             text: "OK".to_string(),
+            text_color: Color::BLACK.into(),
+            background_color: Color::WHITE.into(),
             action: |commands, root_entity| {
                 // Fire event to spawn a new popup when user clicks 'OK'.
-                commands.add(|world: &mut World| {
+                commands.queue(|world: &mut World| {
                     world.send_event(TextPopupEvent {
                         content: "New Popup Generated".to_string(),
                         location: TextPopupLocation::Bottom,
@@ -31,7 +33,8 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
         }),
         dismiss_button: Some(TextPopupButton {
             text: "Cancel".to_string(),
-            background_color: Color::srgb(100., 0., 0.),
+            text_color: Color::BLACK.into(),
+            background_color: Color::linear_rgb(1., 0., 0.).into(),
             ..Default::default()
         }),
         ..default()

@@ -9,20 +9,20 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
-    commands.spawn(Camera2dBundle::default());
+    commands.spawn(Camera2d::default());
 
-    commands.spawn(TextBundle::from_section(
-        "Some Other Element",
-        TextStyle {
+    commands.spawn((
+        Text::new("Some Other Element"),
+        TextFont {
             font_size: 40.,
-            color: Color::WHITE,
             ..Default::default()
         },
+        TextColor::from(Color::WHITE),
     ));
 
     text_popup_events.send(TextPopupEvent {
         content: "Modal Example".to_string(),
-        modal: Some(Color::srgb(0., 0., 100.).with_alpha(0.75)),
+        modal: Some(Color::linear_rgba(0., 0., 100., 0.75).into()),
         timeout: TextPopupTimeout::Seconds(5),
         ..default()
     });

@@ -13,13 +13,17 @@ fn setup(
     asset_server: Res<AssetServer>,
     mut text_popup_events: EventWriter<TextPopupEvent>,
 ) {
-    commands.spawn(Camera2dBundle::default());
+    commands.spawn(Camera2d::default());
 
     text_popup_events.send(TextPopupEvent {
         content: "Custom Font Example".to_string(),
-        font: Some(asset_server.load("fonts/FiraSans-Bold.ttf")),
-        font_size: 64.0,
-        font_color: Color::srgb(100., 0., 0.),
+        text_font: TextFont {
+            font_size: 64.0,
+            font: asset_server.load("fonts/FiraSans-Bold.ttf"),
+            ..Default::default()
+        },
+        text_color: Color::srgb(100., 0., 0.).into(),
+        padding: UiRect::all(Val::Px(25.)),
         ..default()
     });
 }

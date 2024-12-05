@@ -9,7 +9,7 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
-    commands.spawn(Camera2dBundle::default());
+    commands.spawn(Camera2d::default());
 
     let popup_locations = vec![
         TextPopupLocation::TopLeft,
