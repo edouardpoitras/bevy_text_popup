@@ -100,6 +100,8 @@ pub enum TextPopupLocation {
     BottomLeft,
     Bottom,
     BottomRight,
+    /// Custom location specified by x and y coordinates in pixels
+    Custom(f32, f32),
 }
 
 #[derive(Debug)]

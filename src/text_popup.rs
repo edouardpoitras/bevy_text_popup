@@ -41,6 +41,7 @@ fn get_root_node(text_popup_event: &TextPopupEvent) -> TextPopupRootNode {
         TextPopupLocation::TopRight | TextPopupLocation::Right | TextPopupLocation::BottomRight => {
             JustifyContent::End
         },
+        TextPopupLocation::Custom(_, _) => JustifyContent::Start,
     };
     let node = Node {
         position_type: PositionType::Absolute,
@@ -80,6 +81,10 @@ fn get_text_node(text_popup_event: &TextPopupEvent) -> TextPopupTextNode {
         | TextPopupLocation::Bottom
         | TextPopupLocation::BottomRight => {
             node.bottom = Val::Percent(0.);
+        },
+        TextPopupLocation::Custom(x, y) => {
+            node.left = Val::Px(x);
+            node.top = Val::Px(y);
         },
     };
     TextPopupTextNode {

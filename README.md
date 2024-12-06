@@ -83,6 +83,10 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
 
 ![Locations](examples/locations.png?raw=true "Locations")
 
+And example showing custom pixel coordinates:
+
+`cargo run --example custom_locations`
+
 ### Modal
 
 `cargo run --example modal`
