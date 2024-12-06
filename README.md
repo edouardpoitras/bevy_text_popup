@@ -54,6 +54,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
             background_color: Color::linear_rgb(1., 1., 1.).into(),
             ..Default::default()
         }),
+        name: Some(Name::new("custom_popup_name")), // Name component will be added to entity.
         ..default()
     });
 }

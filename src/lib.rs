@@ -1,6 +1,7 @@
 #![doc = include_str!("../README.md")]
 
 use bevy::{
+    core::Name,
     prelude::{
         default, Alpha, App, Color, Commands, Component, DespawnRecursiveExt, Entity, Event, Node,
         Plugin, Text, Update,
@@ -61,6 +62,7 @@ pub struct TextPopupEvent {
     pub location: TextPopupLocation,
     pub z_index: GlobalZIndex,
     pub timeout: TextPopupTimeout,
+    pub name: Option<Name>,
 }
 
 impl Default for TextPopupEvent {
@@ -84,6 +86,7 @@ impl Default for TextPopupEvent {
             location: default(),
             z_index: GlobalZIndex(i32::MAX),
             timeout: TextPopupTimeout::Never,
+            name: None,
         }
     }
 }

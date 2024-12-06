@@ -130,6 +130,9 @@ fn spawn_text_popup(
     } else {
         spawned_root.insert(TextPopupNeverExpires)
     };
+    if let Some(name) = &text_popup_event.name {
+        spawned_root.insert(name.clone());
+    }
     let root_id = spawned_root.id();
     spawned_root.with_children(|commands| {
         commands
