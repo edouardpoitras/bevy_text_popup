@@ -20,7 +20,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
         TextColor::from(Color::WHITE),
     ));
 
-    text_popup_events.send(TextPopupEvent {
+    text_popup_events.write(TextPopupEvent {
         content: "Modal Example".to_string(),
         modal: Some(Color::linear_rgba(0., 0., 100., 0.75).into()),
         timeout: TextPopupTimeout::Seconds(5),

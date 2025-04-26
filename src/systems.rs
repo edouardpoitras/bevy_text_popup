@@ -1,5 +1,5 @@
 use bevy::{
-    prelude::{Changed, Children, Commands, DespawnRecursiveExt, Entity, EventReader, Query, Res},
+    prelude::{Changed, Children, Commands, Entity, EventReader, Query, Res},
     time::Time,
     ui::Interaction,
 };
@@ -27,7 +27,7 @@ pub fn cleanup_expired_text_popups(
     let current_time = time.elapsed_secs_f64();
     for (entity, text_popup) in text_popups.iter() {
         if text_popup.expiration_time < current_time {
-            commands.entity(entity).despawn_recursive();
+            commands.entity(entity).despawn();
         }
     }
 }

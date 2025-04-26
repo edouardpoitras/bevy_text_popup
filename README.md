@@ -104,6 +104,7 @@ And example showing custom pixel coordinates:
 
 |bevy|bevy_text_popup|
 |---|---|
+|0.16|0.6|
 |0.15|0.5|
 |0.14|0.4|
 |0.13|0.3|

@@ -17,5 +17,5 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
         border_color: BorderColor::from(Color::srgb(100., 0., 0.)),
         ..default()
     };
-    text_popup_events.send(event);
+    text_popup_events.write(event);
 }

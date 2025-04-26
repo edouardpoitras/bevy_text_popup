@@ -27,7 +27,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
                     });
                 });
                 // Despawn the original popup.
-                commands.entity(root_entity).despawn_recursive();
+                commands.entity(root_entity).despawn();
             },
             ..Default::default()
         }),
@@ -39,5 +39,5 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
         }),
         ..default()
     };
-    text_popup_events.send(event);
+    text_popup_events.write(event);
 }

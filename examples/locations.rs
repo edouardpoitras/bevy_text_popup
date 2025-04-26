@@ -24,7 +24,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
     ];
 
     for location in popup_locations {
-        text_popup_events.send(TextPopupEvent {
+        text_popup_events.write(TextPopupEvent {
             content: format!("{:?}", location),
             location,
             ..default()

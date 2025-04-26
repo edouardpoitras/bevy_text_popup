@@ -15,7 +15,7 @@ fn setup(
 ) {
     commands.spawn(Camera2d::default());
 
-    text_popup_events.send(TextPopupEvent {
+    text_popup_events.write(TextPopupEvent {
         content: "Custom Font Example".to_string(),
         text_font: TextFont {
             font_size: 64.0,

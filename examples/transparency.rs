@@ -11,7 +11,7 @@ fn main() {
 fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
     commands.spawn(Camera2d::default());
 
-    text_popup_events.send(TextPopupEvent {
+    text_popup_events.write(TextPopupEvent {
         content: "Transparent Background".to_string(),
         text_font: TextFont {
             font_size: 64.0,
@@ -22,7 +22,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
         ..default()
     });
 
-    text_popup_events.send(TextPopupEvent {
+    text_popup_events.write(TextPopupEvent {
         content: "Transparent Text".to_string(),
         text_font: TextFont {
             font_size: 64.0,

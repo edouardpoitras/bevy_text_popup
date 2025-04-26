@@ -17,7 +17,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
         name: Some(Name::new("named_example")),
         ..default()
     };
-    text_popup_events.send(event);
+    text_popup_events.write(event);
 }
 
 fn update(
@@ -33,7 +33,7 @@ fn update(
                     "Deleting our named popup root entity: {:?} with name: {:?}",
                     entity, name
                 );
-                commands.entity(entity).despawn_recursive();
+                commands.entity(entity).despawn();
             }
         }
     }

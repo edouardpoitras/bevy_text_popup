@@ -1,10 +1,9 @@
 #![doc = include_str!("../README.md")]
 
 use bevy::{
-    core::Name,
     prelude::{
-        default, Alpha, App, Color, Commands, Component, DespawnRecursiveExt, Entity, Event, Node,
-        Plugin, Text, Update,
+        default, Alpha, App, Color, Commands, Component, Entity, Event, Name, Node, Plugin, Text,
+        Update,
     },
     text::{JustifyText, TextColor, TextFont, TextLayout},
     ui::{BackgroundColor, BorderColor, GlobalZIndex, UiRect, Val},
@@ -140,7 +139,7 @@ impl Default for TextPopupButton {
             padding: UiRect::all(Val::Px(0.0)),
             margin: UiRect::all(Val::Px(5.0)),
             background_color: BackgroundColor::from(Color::BLACK),
-            action: |commands, entity| commands.entity(entity).despawn_recursive(),
+            action: |commands, entity| commands.entity(entity).despawn(),
         }
     }
 }

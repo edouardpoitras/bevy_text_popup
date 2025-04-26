@@ -14,7 +14,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
     let custom_positions = vec![(100.0, 100.0), (300.0, 200.0), (500.0, 300.0)];
 
     for (x, y) in custom_positions {
-        text_popup_events.send(TextPopupEvent {
+        text_popup_events.write(TextPopupEvent {
             content: format!("Custom ({}, {})", x, y),
             location: TextPopupLocation::Custom(x, y),
             ..default()
