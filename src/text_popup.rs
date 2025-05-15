@@ -7,8 +7,8 @@ use bevy::{
 
 use crate::{
     TextPopup, TextPopupActionNode, TextPopupButtonActionData, TextPopupEvent, TextPopupExpires,
-    TextPopupLocation, TextPopupNeverExpires, TextPopupRootNode, TextPopupTextNode,
-    TextPopupTimeout,
+    TextPopupExpiresInFrames, TextPopupLocation, TextPopupNeverExpires, TextPopupRootNode,
+    TextPopupTextNode, TextPopupTimeout,
 };
 
 pub fn generate_text_popup_from_event(
@@ -123,12 +123,14 @@ fn spawn_text_popup(
         root_node.background_color,
         z_index,
     ));
-    let spawned_root = if let TextPopupTimeout::Seconds(seconds) = text_popup_event.timeout {
-        spawned_root.insert(TextPopupExpires {
+    let spawned_root = match text_popup_event.timeout {
+        TextPopupTimeout::Seconds(seconds) => spawned_root.insert(TextPopupExpires {
             expiration_time: time.elapsed_secs_f64() + seconds as f64,
-        })
-    } else {
-        spawned_root.insert(TextPopupNeverExpires)
+        }),
+        TextPopupTimeout::Frames(frames) => spawned_root.insert(TextPopupExpiresInFrames {
+            frames_remaining: frames,
+        }),
+        TextPopupTimeout::Never => spawned_root.insert(TextPopupNeverExpires),
     };
     if let Some(name) = &text_popup_event.name {
         spawned_root.insert(name.clone());

@@ -18,9 +18,14 @@ pub struct TextPopup;
 #[derive(Debug, Component)]
 pub struct TextPopupNeverExpires;
 
-#[derive(Debug, Component)]
+#[derive(Debug, Default, Component)]
 pub struct TextPopupExpires {
     pub expiration_time: f64,
+}
+
+#[derive(Debug, Default, Component)]
+pub struct TextPopupExpiresInFrames {
+    pub frames_remaining: u32,
 }
 
 #[derive(Debug, Default)]
@@ -110,6 +115,7 @@ pub enum TextPopupLocation {
 pub enum TextPopupTimeout {
     Never,
     Seconds(u32),
+    Frames(u32),
 }
 
 #[derive(Debug, Clone)]
@@ -159,6 +165,7 @@ impl Plugin for TextPopupPlugin {
             (
                 systems::handle_text_popup_events,
                 systems::cleanup_expired_text_popups,
+                systems::cleanup_frame_expired_text_popups,
                 systems::text_popup_button_system,
             ),
         );

@@ -6,7 +6,7 @@ use bevy::{
 
 use crate::{
     text_popup::generate_text_popup_from_event, TextPopupButtonActionData, TextPopupEvent,
-    TextPopupExpires,
+    TextPopupExpires, TextPopupExpiresInFrames,
 };
 
 pub fn handle_text_popup_events(
@@ -52,6 +52,18 @@ pub fn text_popup_button_system(
             Interaction::None => {
                 // Back to normal after a hover.
             },
+        }
+    }
+}
+
+pub fn cleanup_frame_expired_text_popups(
+    mut commands: Commands,
+    mut text_popups: Query<(Entity, &mut TextPopupExpiresInFrames)>,
+) {
+    for (entity, mut text_popup) in text_popups.iter_mut() {
+        text_popup.frames_remaining = text_popup.frames_remaining.saturating_sub(1);
+        if text_popup.frames_remaining == 0 {
+            commands.entity(entity).despawn();
         }
     }
 }
