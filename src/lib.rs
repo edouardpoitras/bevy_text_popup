@@ -2,8 +2,8 @@
 
 use bevy::{
     prelude::{
-        default, Alpha, App, Color, Commands, Component, Entity, EntityCommands, Event, Name, Node, Plugin, Text,
-        Update,
+        default, Alpha, App, Color, Commands, Component, Entity, EntityCommands, Event, Name, Node,
+        Plugin, Text, Update,
     },
     text::{JustifyText, TextColor, TextFont, TextLayout},
     ui::{BackgroundColor, BorderColor, GlobalZIndex, UiRect, Val},

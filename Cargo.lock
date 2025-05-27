@@ -1177,7 +1177,7 @@ dependencies = [
 
 [[package]]
 name = "bevy_text_popup"
-version = "0.6.1"
+version = "0.6.2"
 dependencies = [
  "bevy",
 ]

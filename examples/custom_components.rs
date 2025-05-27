@@ -1,5 +1,7 @@
 use bevy::prelude::*;
-use bevy_text_popup::{TextPopup, TextPopupEvent, TextPopupPlugin, TextPopupTimeout};
+use bevy_text_popup::{
+    TextPopup, TextPopupEvent, TextPopupLocation, TextPopupPlugin, TextPopupTimeout,
+};
 
 #[derive(Component, Debug)]
 struct GamepadTipsRight;
@@ -27,9 +29,10 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
     commands.spawn(Camera2d::default());
 
     // Example 1: Gamepad tip with custom marker component
-    text_popup_events.send(TextPopupEvent {
+    text_popup_events.write(TextPopupEvent {
         content: "Press A to interact".to_string(),
         timeout: TextPopupTimeout::Seconds(3),
+        location: TextPopupLocation::Top,
         custom_component: Some(|entity_commands| {
             entity_commands.insert(GamepadTipsRight);
         }),
@@ -37,7 +40,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
     });
 
     // Example 2: Player-specific UI popup with multiple components
-    text_popup_events.send(TextPopupEvent {
+    text_popup_events.write(TextPopupEvent {
         content: "Player 1 Health: 100%".to_string(),
         timeout: TextPopupTimeout::Seconds(5),
         custom_component: Some(|entity_commands| {
@@ -47,9 +50,10 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
     });
 
     // Example 3: NPC dialogue with custom data
-    text_popup_events.send(TextPopupEvent {
+    text_popup_events.write(TextPopupEvent {
         content: "Hello, traveler! Welcome to our village.".to_string(),
         timeout: TextPopupTimeout::Frames(300),
+        location: TextPopupLocation::Bottom,
         custom_component: Some(|entity_commands| {
             entity_commands.insert(NpcDialogue { npc_id: 42 });
         }),
@@ -88,7 +92,7 @@ fn cleanup_system(
     if *iterations > 240 {
         for entity in query.iter() {
             info!("Custom cleanup: Removing NPC dialogue popup: {:?}", entity);
-            commands.entity(entity).despawn_recursive();
+            commands.entity(entity).despawn();
         }
     }
 }
