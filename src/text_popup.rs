@@ -135,6 +135,9 @@ fn spawn_text_popup(
     if let Some(name) = &text_popup_event.name {
         spawned_root.insert(name.clone());
     }
+    if let Some(custom_component_fn) = text_popup_event.custom_component {
+        custom_component_fn(&mut spawned_root);
+    }
     let root_id = spawned_root.id();
     spawned_root.with_children(|commands| {
         commands
