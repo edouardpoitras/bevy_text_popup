@@ -88,6 +88,10 @@ And example showing custom pixel coordinates:
 
 `cargo run --example custom_locations`
 
+### Custom Components
+
+`cargo run --example custom_components`
+
 ### Modal
 
 `cargo run --example modal`

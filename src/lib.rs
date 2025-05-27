@@ -2,8 +2,8 @@
 
 use bevy::{
     prelude::{
-        default, Alpha, App, Color, Commands, Component, Entity, Event, Name, Node, Plugin, Text,
-        Update,
+        default, Alpha, App, Color, Commands, Component, Entity, EntityCommands, Event, Name, Node,
+        Plugin, Text, Update,
     },
     text::{JustifyText, TextColor, TextFont, TextLayout},
     ui::{BackgroundColor, BorderColor, GlobalZIndex, UiRect, Val},
@@ -67,6 +67,9 @@ pub struct TextPopupEvent {
     pub z_index: GlobalZIndex,
     pub timeout: TextPopupTimeout,
     pub name: Option<Name>,
+    /// Optional function to add custom components to the popup entity.
+    /// The function receives mutable access to the EntityCommands for the root popup entity.
+    pub custom_component: Option<fn(&mut EntityCommands)>,
 }
 
 impl Default for TextPopupEvent {
@@ -91,6 +94,7 @@ impl Default for TextPopupEvent {
             z_index: GlobalZIndex(i32::MAX),
             timeout: TextPopupTimeout::Never,
             name: None,
+            custom_component: None,
         }
     }
 }
