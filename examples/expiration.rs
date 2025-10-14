@@ -9,7 +9,7 @@ fn main() {
         .run();
 }
 
-fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
+fn setup(mut commands: Commands, mut text_popup_events: MessageWriter<TextPopupEvent>) {
     commands.spawn(Camera2d::default());
 
     text_popup_events.write(TextPopupEvent {
@@ -49,7 +49,7 @@ fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEve
 
 // This system demonstrates that you can also spawn popups during the game
 fn spawn_new_popups(
-    mut text_popup_events: EventWriter<TextPopupEvent>,
+    mut text_popup_events: MessageWriter<TextPopupEvent>,
     keyboard_input: Res<ButtonInput<KeyCode>>,
 ) {
     if keyboard_input.just_pressed(KeyCode::Space) {

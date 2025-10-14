@@ -1,6 +1,6 @@
 use bevy::{
     prelude::{Button, Commands, Node, Text},
-    text::{JustifyText, TextLayout},
+    text::{Justify, TextLayout},
     time::Time,
     ui::{AlignItems, Display, FlexDirection, GlobalZIndex, JustifyContent, PositionType, Val},
 };
@@ -165,7 +165,7 @@ fn spawn_text_popup(
                                     ..Default::default()
                                 },
                                 confirm_button.border_color,
-                                TextLayout::new_with_justify(JustifyText::Center),
+                                TextLayout::new_with_justify(Justify::Center),
                                 TextPopupButtonActionData {
                                     root_id,
                                     action: text_popup_event
@@ -195,7 +195,7 @@ fn spawn_text_popup(
                                     ..Default::default()
                                 },
                                 dismiss_button.border_color,
-                                TextLayout::new_with_justify(JustifyText::Center),
+                                TextLayout::new_with_justify(Justify::Center),
                                 TextPopupButtonActionData {
                                     root_id,
                                     action: text_popup_event

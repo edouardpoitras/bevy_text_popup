@@ -8,7 +8,7 @@ fn main() {
         .run();
 }
 
-fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
+fn setup(mut commands: Commands, mut text_popup_events: MessageWriter<TextPopupEvent>) {
     commands.spawn(Camera2d::default());
 
     let event = TextPopupEvent {

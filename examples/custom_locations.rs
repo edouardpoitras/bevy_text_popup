@@ -8,7 +8,7 @@ fn main() {
         .run();
 }
 
-fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
+fn setup(mut commands: Commands, mut text_popup_events: MessageWriter<TextPopupEvent>) {
     commands.spawn(Camera2d::default());
 
     let custom_positions = vec![(100.0, 100.0), (300.0, 200.0), (500.0, 300.0)];

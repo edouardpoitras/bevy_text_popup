@@ -41,7 +41,7 @@ fn main() {
         .run();
 }
 
-fn setup(mut commands: Commands, mut text_popup_events: EventWriter<TextPopupEvent>) {
+fn setup(mut commands: Commands, mut text_popup_events: MessageWriter<TextPopupEvent>) {
     commands.spawn(Camera2d::default());
 
     text_popup_events.send(TextPopupEvent {
@@ -108,6 +108,7 @@ And example showing custom pixel coordinates:
 
 |bevy|bevy_text_popup|
 |---|---|
+|0.17|0.7|
 |0.16|0.6|
 |0.15|0.5|
 |0.14|0.4|

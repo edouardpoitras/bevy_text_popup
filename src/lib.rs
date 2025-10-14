@@ -1,12 +1,10 @@
 #![doc = include_str!("../README.md")]
 
 use bevy::{
-    prelude::{
-        default, Alpha, App, Color, Commands, Component, Entity, EntityCommands, Event, Name, Node,
+    ecs::message::Message, prelude::{
+        default, Alpha, App, Color, Commands, Component, Entity, EntityCommands, Name, Node,
         Plugin, Text, Update,
-    },
-    text::{JustifyText, TextColor, TextFont, TextLayout},
-    ui::{BackgroundColor, BorderColor, GlobalZIndex, UiRect, Val},
+    }, text::{Justify, TextColor, TextFont, TextLayout}, ui::{BackgroundColor, BorderColor, GlobalZIndex, UiRect, Val}
 };
 
 mod systems;
@@ -49,7 +47,7 @@ pub struct TextPopupTextNode {
 pub struct TextPopupActionNode(pub Node);
 
 /// Users send these events to create text popups.
-#[derive(Debug, Event)]
+#[derive(Debug, Message)]
 pub struct TextPopupEvent {
     pub content: String,
     pub text_font: TextFont,
@@ -59,7 +57,7 @@ pub struct TextPopupEvent {
     pub padding: UiRect,
     pub margin: UiRect,
     pub modal: Option<BackgroundColor>,
-    pub text_alignment: JustifyText,
+    pub text_alignment: Justify,
     pub background_color: BackgroundColor,
     pub confirm_button: Option<TextPopupButton>,
     pub dismiss_button: Option<TextPopupButton>,
@@ -86,7 +84,7 @@ impl Default for TextPopupEvent {
             padding: UiRect::all(Val::Px(5.)),
             margin: UiRect::all(Val::Px(5.)),
             modal: None,
-            text_alignment: JustifyText::Center,
+            text_alignment: Justify::Center,
             background_color: BackgroundColor::from(Color::BLACK),
             confirm_button: default(),
             dismiss_button: default(),
@@ -164,7 +162,7 @@ pub struct TextPopupPlugin;
 
 impl Plugin for TextPopupPlugin {
     fn build(&self, app: &mut App) {
-        app.add_event::<TextPopupEvent>().add_systems(
+        app.add_message::<TextPopupEvent>().add_systems(
             Update,
             (
                 systems::handle_text_popup_events,

@@ -1,5 +1,5 @@
 use bevy::{
-    prelude::{Changed, Children, Commands, Entity, EventReader, Query, Res},
+    prelude::{Changed, Children, Commands, Entity, MessageReader, Query, Res},
     time::Time,
     ui::Interaction,
 };
@@ -11,7 +11,7 @@ use crate::{
 
 pub fn handle_text_popup_events(
     mut commands: Commands,
-    mut text_popup_events: EventReader<TextPopupEvent>,
+    mut text_popup_events: MessageReader<TextPopupEvent>,
     time: Res<Time>,
 ) {
     for text_popup_event in text_popup_events.read() {

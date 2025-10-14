@@ -1,10 +1,10 @@
 [package]
 name = "bevy_text_popup"
-version = "0.6.2"
+version = "0.7.0"
 edition = "2021"
 description = "Easily create temporary text pop-up nodes in the Bevy game engine"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/edouardpoitras/bevy_text_popup"
 
 [dependencies]
-bevy = "0.16"
+bevy = "0.17"

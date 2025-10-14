@@ -11,7 +11,7 @@ fn main() {
 fn setup(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
-    mut text_popup_events: EventWriter<TextPopupEvent>,
+    mut text_popup_events: MessageWriter<TextPopupEvent>,
 ) {
     commands.spawn(Camera2d::default());
 
