@@ -1,10 +1,13 @@
 #![doc = include_str!("../README.md")]
 
 use bevy::{
-    ecs::message::Message, prelude::{
+    ecs::message::Message,
+    prelude::{
         default, Alpha, App, Color, Commands, Component, Entity, EntityCommands, Name, Node,
         Plugin, Text, Update,
-    }, text::{Justify, TextColor, TextFont, TextLayout}, ui::{BackgroundColor, BorderColor, GlobalZIndex, UiRect, Val}
+    },
+    text::{Justify, TextColor, TextFont, TextLayout},
+    ui::{BackgroundColor, BorderColor, GlobalZIndex, UiRect, Val},
 };
 
 mod systems;
